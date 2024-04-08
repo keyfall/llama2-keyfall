@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-from mySQL_config import func
+from utils.mySQL_config import func
 
 # 定义用户表类
-class user_func:
+class user_func():
     ''' 用户增加、查询 '''
     def __init__(self,user,pwd):
         self.user = user

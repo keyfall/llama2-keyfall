@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8" />
@@ -22,7 +21,7 @@
                 <canvas id="demo-canvas"></canvas>
                 <div class="logo_box">
                     <h3>欢迎你</h3>
-                    <form action="user/login" method="post">
+                    <form action="{{ url_for('user.login') }}" method="post">
                         {{form.csrf_token()}}
 <!--                        <input name="csrf_token"  value="{{form.csrf_token()}}" />-->
                         <div class="input_outer">
@@ -35,7 +34,8 @@
                             {{ form.password(size=16, class='text')}}
                             <!--<input name="logpass" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="password" placeholder="请输入密码">-->
                         </div>
-                        <div class="mb2"><a class="act-but submit" style="color: #FFFFFF">登录</a></div>
+                        <div class="mb2" ><button style="width:100%" class="act-but submit" type="submit">登录</button></div>
+<!--                        <button class="mb2 act-but submit" type="submit">登录</button>-->
                     </form>
                 </div>
             </div>

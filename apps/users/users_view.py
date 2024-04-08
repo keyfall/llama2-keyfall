@@ -10,7 +10,7 @@ def login():
     form = User()
     if request.method == 'POST':
         # 这里实现登录逻辑，如验证用户名和密码
-        if form.validate():
+        if form.validate_on_submit():
             return 'ok'
     return render_template('users/login.html', form=form)
 

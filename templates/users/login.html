@@ -27,17 +27,13 @@
                         <div class="input_outer">
                             <span class="u_user"></span>
                             {{ form.name(size=16, class='text')}}
-<!--                            <input name="logname" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户">-->
                         </div>
                         <div class="input_outer">
                             <span class="us_uer"></span>
                             {{ form.password(size=16, class='text')}}
-                            <!--<input name="logpass" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;" value="" type="password" placeholder="请输入密码">-->
                         </div>
                         <div class="mb2" ><button style="width:100%" class="act-but submit" type="submit">登录</button></div>
-                                                <div class="mb2" ><a style="width:100%" class="act-but submit" href="{{ url_for('user.register')}}">注册</a></div>
-
-<!--                        <button class="mb2 act-but submit" type="submit">登录</button>-->
+                        <div class="mb2" ><a  style="width:100%;color:black" class="act-but submit" href="{{ url_for('user.register')}}">注册</a></div>
                     </form>
                 </div>
             </div>

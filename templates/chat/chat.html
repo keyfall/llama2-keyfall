@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+	</head>
+	<body>
+		<div id="sonHiddenIcon" class="son_icon son_icon_hideen" onclick="btn_display_icon()"></div>
+		<div class="left_layout" id="left_layout_id">
+			<div class="father_icon">
+				<div id="sonIcon" class="son_icon son_icon_display" onclick="btn_icon()"></div>
+				<div id="left_person" class="left_person">
+					<div style="display:flex;justify-content: center;align-items:center">
+						<div class="false_img">
+							<div class="flase_img_son"></div>
+						</div>
+						<div class="false_img_right">
+							<strong>Michael Jackson</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="new_chat">新建聊天</div>
+			<div class="new_chat new_chat_text">
+				<div class="false_img" style="border:1px solid lightgray;border-radius:20%;color:green;">...</div>
+				<div style="flex:8;color:green;">前端有哪些性能优化？</div>
+			</div>
+		</div>
+		<div class="right_layout">
+			<!-- <div class="right_layout_flex"> -->
+				<div class="right_layout_son">
+					<div class="right_layout_myselfChat">
+						<div id="datatime" style="flex:2;font-size:13px;color:lightgray"></div>
+						<div style="flex:1">
+							<div class="flase_img_son" style="width:40px;height:40px;"></div>
+						</div>
+					</div>
+					<div class="myself_chat">
+						前端有哪些性能优化？
+					</div>
+					<div class="right_layout_son_ipt">
+						<input class="ipt" type="text" placeholder="来说点什么吧...">
+						<button class="btn">发送</button>
+					</div>
+				</div>
+			<!-- </div> -->
+		</div>
+		<script>
+			let display_sonIcon = document.getElementById('sonIcon')
+			let hidden_sonIcon = document.getElementById('sonHiddenIcon')
+			let left_layout_id = document.getElementById('left_layout_id')
+			let myself_datetime=document.getElementById('datatime')
+			display_sonIcon.innerHTML = '<'
+			hidden_sonIcon.innerHTML = '>'
+
+			function btn_icon() {
+				left_layout_id.style.display = 'none'
+				hidden_sonIcon.style.display = 'block'
+			}
+
+			function btn_display_icon() {
+				left_layout_id.style.display = 'block'
+				hidden_sonIcon.style.display = 'none'
+			}
+			function isZero(num){
+				return (num < 10 ? '0' : '') + num;
+			}
+			function getDateTime(DOM){
+				let datetime=new Date;
+				let year=datetime.getFullYear();
+				let month=isZero(datetime.getMonth()+1);
+				let day=isZero(datetime.getDate());
+				let hour=isZero(datetime.getHours());
+				let minute=isZero(datetime.getMinutes());
+				let seconds=isZero(datetime.getSeconds());
+				let date=year+'/'+month+'/'+day+' '+hour+':'+minute+":"+seconds;
+				DOM.innerHTML=date
+			}
+			getDateTime(myself_datetime)
+		</script>
+	</body>
+</html>

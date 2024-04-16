@@ -24,8 +24,10 @@ def index():
 @app.before_request
 def before_request():
     # 判断用户是否在session
-    if 'username' not in session:
+    if 'username' in session.keys():
         return redirect(url_for('user.login'))
+    else:
+        return redirect
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -3,6 +3,7 @@ import replicate
 import os
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import Ollama
+
 llm = Ollama(model="qwen:14b-chat")
 prompt_template = PromptTemplate.from_template(
     "Tell me a {adjective} joke about {content}."
@@ -25,7 +26,8 @@ with st.sidebar:
     temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=1.0, value=0.1, step=0.01)
     top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
     max_length = st.sidebar.slider('max_length', min_value=32, max_value=128, value=120, step=8)
-    st.markdown('📖 Learn how to build this app in this [blog](https://blog.streamlit.io/how-to-build-a-llama-2-chatbot/)!')
+    st.markdown(
+        '📖 Learn how to build this app in this [blog](https://blog.streamlit.io/how-to-build-a-llama-2-chatbot/)!')
 
 # Store LLM generated responses
 
@@ -37,8 +39,11 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
+
 def clear_chat_history():
     st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+
+
 st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
 
 
@@ -51,6 +56,7 @@ def generate_llama2_response(prompt_input):
             string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
     output = llm.invoke(f"{string_dialogue} {prompt_input} Assistant:")
     return output
+
 
 # User-provided prompt
 if prompt := st.chat_input(placeholder="please ask your question"):

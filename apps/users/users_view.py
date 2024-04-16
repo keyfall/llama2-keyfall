@@ -17,7 +17,8 @@ def login():
             user_f.selectUserPwd()
             session["username"] = form.name.data
             session["password"] = form.password.data
-            return 'ok'
+            return render_template('chat/chat.html', form=form)
+
     return render_template('users/login.html', form=form)
 
 @user_bp.route('/register', methods=['GET', 'POST'])
@@ -30,7 +31,7 @@ def register():
             user_f.insetinto()
             session["username"] = form.name.data
             session["password"] = form.password.data
-        return 'ok'
+            return render_template('chat/chat.html', form=form)
     return render_template('users/register.html', form=form)
 
 @user_bp.route('/logout')
